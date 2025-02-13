@@ -2,6 +2,7 @@
 
 # https://developer.hashicorp.com/terraform/install
 
+echo "Installazione Terraform CLI"
 echo "Aggiornamento dei pacchetti e installazione delle dipendenze necessarie..."
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 
