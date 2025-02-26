@@ -1,10 +1,15 @@
 #!/bin/sh
 
-# Aggiorna la lista dei pacchetti
+# Update package list
+echo "Updating package list..."
 sudo apt update
 
-# Installa Git
+# Install Git
+echo "Installing Git..."
 sudo apt install git -y
 
-# Verifica l'installazione
+# Verify installation
+echo "Verifying Git installation..."
 git --version
+
+echo "Git installation completed!"
