@@ -2,41 +2,49 @@
 
 # https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
 
-# Inizio installazione di Azure CLI
-echo "Iniziamo l'installazione di Azure CLI, un insieme di strumenti di comando per gestire le risorse di Azure direttamente dal terminale."
 
-# 1. Ottenere i pacchetti necessari per il processo di installazione:
-echo "Aggiornamento dei pacchetti..."
-sudo apt-get update
+# Option 1: Install with one command
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
-echo "Installazione di apt-transport-https, ca-certificates, curl, gnupg, e lsb-release..."
-sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+## Option 2: Step-by-step installation instruction
+## Begin Azure CLI installation
+#echo "Starting Azure CLI installation, a set of command-line tools for managing Azure resources directly from the terminal."
+#
+## 1. Obtain the necessary packages for the installation process:
+#echo "Updating packages..."
+#sudo apt-get update
+#
+#echo "Installing apt-transport-https, ca-certificates, curl, gnupg, and lsb-release..."
+#sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+#
+## 2. Download and install the Microsoft signing key:
+#echo "Creating the /etc/apt/keyrings directory if it doesn't already exist..."
+#sudo mkdir -p /etc/apt/keyrings
+#
+#echo "Downloading and installing the Microsoft signing key..."
+#curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+#
+#echo "Setting permissions for the key..."
+#sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+#
+## 3. Add the Azure CLI software repository:
+#AZ_DIST=$(lsb_release -cs)
+#echo "Configuring the Azure CLI repository for ${AZ_DIST}..."
+#echo "Types: deb
+#URIs: https://packages.microsoft.com/repos/azure-cli/
+#Suites: ${AZ_DIST}
+#Components: main
+#Architectures: $(dpkg --print-architecture)
+#Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
+#
+## 4. Update repository information and install the azure-cli package:
+#echo "Updating repository information..."
+#sudo apt-get update
+#
+#echo "Installing Azure CLI..."
+#sudo apt-get install -y azure-cli
 
-# 2. Scaricare e installare la chiave di firma di Microsoft:
-echo "Creazione della directory /etc/apt/keyrings se non esiste già..."
-sudo mkdir -p /etc/apt/keyrings
+echo "Checking the installation"
+az --version
 
-echo "Scaricamento e installazione della chiave di firma Microsoft..."
-curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
-
-echo "Impostazione delle autorizzazioni per la chiave..."
-sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
-
-# 3. Aggiungere il repository software Azure CLI:
-AZ_DIST=$(lsb_release -cs)
-echo "Configurazione del repository Azure CLI per ${AZ_DIST}..."
-echo "Types: deb
-URIs: https://packages.microsoft.com/repos/azure-cli/
-Suites: ${AZ_DIST}
-Components: main
-Architectures: $(dpkg --print-architecture)
-Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
-
-# 4. Aggiornare le informazioni del repository e installare il pacchetto azure-cli:
-echo "Aggiornamento delle informazioni del repository..."
-sudo apt-get update
-
-echo "Installazione di Azure CLI..."
-sudo apt-get install -y azure-cli
-
-echo "Installazione completata!"
+echo "Installation completed!"
