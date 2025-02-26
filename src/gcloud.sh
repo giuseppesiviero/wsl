@@ -1,31 +1,31 @@
 #!/bin/bash
 
-# https://cloud.google.com/sdk/docs/install?hl=it
+# https://cloud.google.com/sdk/docs/install
 
-# Inizio installazione di Google Cloud SDK
-echo "Iniziamo l'installazione del Google Cloud SDK, un insieme di strumenti di comando per gestire le risorse di Google Cloud direttamente dal terminale."
+# Begin Google Cloud SDK installation
+echo "Starting Google Cloud SDK installation, a set of command-line tools for managing Google Cloud resources directly from the terminal."
 
-# 1. Installare i pacchetti necessari per il processo di installazione:
-echo "Installazione di apt-transport-https, ca-certificates, e gnupg..."
+# 1. Install the necessary packages for the installation process:
+echo "Installing apt-transport-https, ca-certificates, and gnupg..."
 sudo apt-get install -y apt-transport-https ca-certificates gnupg
 
-# 2. Aggiungere il repository Google Cloud SDK:
-echo "Aggiunta del repository Google Cloud SDK alla lista delle fonti..."
+# 2. Add the Google Cloud SDK repository:
+echo "Adding the Google Cloud SDK repository to the sources list..."
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
-# 3. Scaricare e installare la chiave di firma Google Cloud:
-echo "Scaricamento e installazione della chiave di firma Google Cloud..."
+# 3. Download and install the Google Cloud signing key:
+echo "Downloading and installing the Google Cloud signing key..."
 sudo curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
-# 4. Aggiornare le informazioni del repository e installare Google Cloud SDK:
-echo "Aggiornamento delle informazioni del repository..."
+# 4. Update repository information and install Google Cloud SDK:
+echo "Updating repository information..."
 sudo apt-get update
 
-echo "Installazione di Google Cloud SDK..."
+echo "Installing Google Cloud SDK..."
 sudo apt-get install -y google-cloud-sdk
 
-# 5. Inizializzare gcloud CLI
-# echo "Inizializzazione di gcloud CLI..."
-# gcloud init
+# 5. Initialize gcloud CLI
+echo "Initializing gcloud CLI..."
+gcloud init
 
-echo "Installazione e inizializzazione di Google Cloud SDK completate!"
+echo "Google Cloud SDK installation and initialization completed!"
