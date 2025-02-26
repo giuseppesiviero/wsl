@@ -1,90 +1,74 @@
-# Installazione di WSL 2 con Ubuntu su Windows
+# 🚀 Repository Setup Guide
 
-## Prerequisiti
-- Windows 10 (versione 1903 o successiva) oppure Windows 11
-- Permessi di amministratore sulla macchina
+This guide will help you download, extract, and set up this repository on your Windows system and copy it to a specific directory inside WSL (Windows Subsystem for Linux). After copying, it will make all `.sh` files executable.
 
-## Passaggi di Installazione
+---
 
-### 1. Abilitare WSL
-Aprire un terminale PowerShell con privilegi di amministratore ed eseguire il seguente comando:
+## 📌 Steps
 
-```powershell
-wsl --install
-```
+### 🖥️ 1. Download the repository as a ZIP file
 
-Questo comando abiliterà automaticamente i componenti richiesti e installerà l'ultima versione di Ubuntu disponibile.
+- Go to the [GitHub page of the repository](https://github.com/giuseppesiviero/wsl.git).
+- Click on the green **"Code"** button.
+- Select **"Download ZIP"** and save the file to your desired location on your Windows system.
 
-Dopo l'installazione, riavviare il computer se richiesto.
+### 📂 2. Extract the ZIP file
 
-### 2. Verificare la Versione di WSL
-Dopo il riavvio, aprire il terminale e digitare:
+- Locate the downloaded ZIP file.
+- Right-click on it and select **"Extract All..."**.
+- Choose a destination folder on your Windows system to extract the contents.
 
-```powershell
-wsl -l -v
-```
+### 🛠️ 3. Open WSL
 
-Se la versione di Ubuntu installata non è su WSL 2, eseguire il seguente comando per impostarla:
+- Open your WSL terminal by typing the following command in the Windows Command Prompt:
 
-```powershell
-wsl --set-version Ubuntu 2
-```
+  ```sh
+  wsl
+  ```
 
-Se si desidera impostare WSL 2 come predefinito per future installazioni, eseguire:
+  Alternatively, you can open the WSL terminal application directly.
 
-```powershell
-wsl --set-default-version 2
-```
+### 📁 4. Create a target directory in WSL
 
-### 3. Aggiornare il Kernel di WSL (se necessario)
-Se richiesto, scaricare e installare manualmente il pacchetto di aggiornamento del kernel dal sito ufficiale di Microsoft:
+- In your WSL terminal, run the following command:
 
-[WSL Kernel Update](https://aka.ms/wsl2kernel)
+  ```sh
+  mkdir -p /path/to/target/directory
+  ```
 
-### 4. Aprire Ubuntu e Configurarlo
-Dopo l'installazione, avviare Ubuntu dal menu Start oppure eseguire:
+  Replace `/path/to/target/directory` with the actual path where you want to copy the repository in your WSL environment.
 
-```powershell
-wsl
-```
+### 📤 5. Copy the extracted files to the WSL directory
 
-Al primo avvio verrà chiesto di creare un nuovo utente e una password.
+- In your WSL terminal, run the following command to copy the files from your Windows system to the WSL directory:
 
-### 5. Aggiornare il Sistema
-Dopo l'avvio di Ubuntu, eseguire i seguenti comandi per aggiornare i pacchetti:
+  ```sh
+  cp -r /mnt/c/path/to/extracted/folder/* /path/to/target/directory/
+  ```
 
-```bash
-sudo apt update && sudo apt upgrade -y
-```
+  Replace `/mnt/c/path/to/extracted/folder` with the path to the extracted folder on your Windows system, and `/path/to/target/directory` with the target directory in WSL.
 
-### 6. Configurare un Nome Host Personalizzato (Opzionale)
-Se si desidera modificare il nome host di Ubuntu in WSL, eseguire:
+### 🔧 6. Make all `.sh` files executable
 
-```bash
-echo "mio-hostname" | sudo tee /etc/hostname
-```
+- Navigate to the target directory in your WSL terminal:
 
-E riavviare WSL con:
+  ```sh
+  cd /path/to/target/directory
+  ```
 
-```powershell
-wsl --shutdown
-```
+- Make all `.sh` files executable by running:
 
-### 7. Configurazione Avanzata (Opzionale)
-Per un'integrazione più avanzata, è possibile:
-- Configurare l'accesso ai file di Windows da WSL (`/mnt/c`)
-- Impostare un server SSH
-- Installare Docker con il supporto WSL 2
+  ```sh
+  chmod +x *.sh
+  ```
 
-### 8. Disinstallare WSL (se necessario)
-Se si desidera rimuovere WSL e Ubuntu:
+---
 
-```powershell
-wsl --unregister Ubuntu
-wsl --uninstall
-```
+## 🎯 Final Comments
 
-## Conclusione
-Ora hai WSL 2 installato e configurato con Ubuntu! 🎉
+✅ By following these steps, you will have successfully set up the repository in your WSL environment.
 
-Per ulteriori informazioni, visita la documentazione ufficiale di Microsoft: [WSL Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+⚠️ **Make sure to verify the file permissions and test the scripts before running them.** If you encounter any issues, check the WSL file paths and permissions.
+
+🎉 Happy coding!
+
