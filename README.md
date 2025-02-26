@@ -54,6 +54,7 @@ This guide will help you download, extract, and set up this repository on your W
 
   ```sh
   cd /path/to/target/directory
+  cd src/
   ```
 
 - Make all `.sh` files executable by running:
