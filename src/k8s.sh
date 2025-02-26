@@ -2,20 +2,28 @@
 
 # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
-echo "Scaricamento dell'ultima versione stabile di kubectl..."
+# Download the latest stable version of kubectl
+echo "Downloading the latest stable version of kubectl..."
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
-echo "Installazione di kubectl..."
+# Install kubectl
+echo "Installing kubectl..."
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
-echo "Verifica della versione di kubectl installata..."
+# Verify the installed kubectl version
+echo "Verifying the installed kubectl version..."
 kubectl version --client
 
+# Check if kubectl was successfully installed
 if [ $? -ne 0 ]; then
-    echo "Errore durante la verifica dell'installazione di kubectl."
+    echo "Error during kubectl installation verification."
     exit 1
 fi
 
-echo "Installazione di kubectl completata con successo!"
+# Inform the user that kubectl installation was successful
+echo "kubectl installation completed successfully!"
 
-echo "Puoi iniziare a utilizzare kubectl eseguendo comandi come 'kubectl get nodes'."
+# Provide usage example for kubectl
+echo "You can start using kubectl by running commands like 'kubectl get nodes'."
+
+
