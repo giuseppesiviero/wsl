@@ -1,19 +1,19 @@
 #!/bin/bash
 
-echo "Aggiunta della chiave GPG di Helm..."
+echo "Adding Helm GPG key..."
 curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 
-echo "Installazione di apt-transport-https..."
+echo "Installing apt-transport-https..."
 sudo apt-get install -y apt-transport-https
 
-echo "Aggiunta del repository di Helm alle sorgenti di APT..."
+echo "Adding Helm repository to APT sources..."
 echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 
-echo "Aggiornamento dei pacchetti..."
+echo "Updating packages..."
 sudo apt-get update
 
-echo "Installazione di Helm..."
+echo "Installing Helm..."
 sudo apt-get install -y helm
 
-echo "Installazione di Helm completata con successo!"
-echo "Puoi verificare l'installazione di Helm eseguendo il comando 'helm version'."
+echo "Helm installation completed successfully!"
+echo "You can verify the Helm installation by running the command 'helm version'."
